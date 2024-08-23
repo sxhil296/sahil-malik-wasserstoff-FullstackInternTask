@@ -10,7 +10,14 @@ import { MdOutlineVisibility } from "react-icons/md";
 import { GiDirectionSigns } from "react-icons/gi";
 import { FaWind } from "react-icons/fa6";
 
-const RightContainer = ({ highlights }) => {
+const RightContainer = ({ highlights, unit }) => {
+  // Convert temperature if needed
+  const convertTemperature = (temp) => {
+    return unit === "metric"
+      ? `${temp}°C`
+      : `${((temp * 9) / 5 + 32).toFixed(1)}°F`;
+  };
+
   return (
     <div className="p-4 bg-[#28282B] rounded-md shadow-xl text-white">
       <h1 className="text-white text-lg font-bold mb-4">Today's Highlights</h1>
@@ -23,7 +30,9 @@ const RightContainer = ({ highlights }) => {
             <div>
               <h4 className="text-sm sm:text-lg font-bold">Wind Speed</h4>
               <p className="text-xs sm:text-base">
-                {highlights.windSpeed} km/h
+                {unit === "metric"
+                  ? `${highlights.windSpeed} km/h`
+                  : `${(highlights.windSpeed / 1.609).toFixed(1)} mph`}
               </p>
             </div>
           </div>
@@ -94,7 +103,9 @@ const RightContainer = ({ highlights }) => {
             <div>
               <h4 className="text-sm sm:text-lg font-bold">Visibility</h4>
               <p className="text-xs sm:text-base">
-                {highlights.visibility / 1000} km
+                {unit === "metric"
+                  ? `${(highlights.visibility / 1000).toFixed(1)} km`
+                  : `${(highlights.visibility / 1609).toFixed(1)} miles`}
               </p>
             </div>
           </div>
@@ -104,7 +115,9 @@ const RightContainer = ({ highlights }) => {
             <WiThermometer className="text-3xl sm:text-4xl mr-3" />
             <div>
               <h4 className="text-sm sm:text-lg font-bold">Feels Like</h4>
-              <p className="text-xs sm:text-base">{highlights.feelsLike}°C</p>
+              <p className="text-xs sm:text-base">
+                {convertTemperature(highlights.feelsLike)}
+              </p>
             </div>
           </div>
         </div>

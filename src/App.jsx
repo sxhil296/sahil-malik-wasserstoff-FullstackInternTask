@@ -9,19 +9,20 @@ import { FaGithub } from "react-icons/fa";
 const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
+  const [unit, setUnit] = useState("metric"); // "metric" for Celsius, "imperial" for Fahrenheit
+
   const apiKey = "ec870ddf40f1fcb6c2d35ab7a4dd4b1c";
-  const units = "metric"; // Celsius
 
   const fetchWeatherData = async (city, latitude, longitude) => {
     try {
       let weatherResponse, forecastResponse;
 
       // Constructing the URLs based on input
-      const weatherByCityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
-      const forecastByCityUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
+      const weatherByCityUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+      const forecastByCityUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
 
-      const weatherByLocationUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
-      const forecastByLocationUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+      const weatherByLocationUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+      const forecastByLocationUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
 
       // API requests based on city or coordinates
       if (city) {
@@ -46,10 +47,18 @@ const App = () => {
     }
   };
 
+  const toggleUnit = () => {
+    setUnit((prevUnit) => (prevUnit === "metric" ? "imperial" : "metric"));
+  };
+
   return (
     <div className="bg-black min-h-screen w-full justify-center overflow-hidden">
       <div className="max-w-[1280px] mx-auto sm:px-4">
-        <Header onSearch={fetchWeatherData} />
+        <Header
+          onSearch={fetchWeatherData}
+          onToggleUnit={toggleUnit}
+          unit={unit}
+        />
 
         {!weatherData ? (
           <div className="flex flex-col items-center justify-center h-[calc(100vh-120px)]">
@@ -71,8 +80,8 @@ const App = () => {
         ) : (
           <div className="main-content flex flex-col sm:flex-row p-4 justify-center sm:mt-20 h-full gap-4">
             <div className="left-side flex flex-col sm:w-1/3 w-full">
-              <LeftUpperContainer weather={weatherData} />
-              <LeftLowerContainer forecast={forecastData} />
+              <LeftUpperContainer weather={weatherData} unit={unit} />
+              <LeftLowerContainer forecast={forecastData} unit={unit} />
             </div>
 
             <div className="right-side sm:w-2/3 w-full">
@@ -87,6 +96,7 @@ const App = () => {
                   visibility: weatherData.visibility,
                   feelsLike: weatherData.main.feels_like,
                 }}
+                unit={unit}
               />
             </div>
           </div>

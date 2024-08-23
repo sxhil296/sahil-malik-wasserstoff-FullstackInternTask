@@ -1,6 +1,13 @@
 import React from "react";
 
-const LeftLowerContainer = ({ forecast }) => {
+const LeftLowerContainer = ({ forecast, unit }) => {
+  // Convert temperature if needed
+  const convertTemperature = (temp) => {
+    return unit === "metric"
+      ? `${Math.round(temp)}°C`
+      : `${((temp * 9) / 5 + 32).toFixed(1)}°F`;
+  };
+
   return (
     <div className="left-lower-container p-4 bg-[#28282B] shadow-xl text-white rounded-md">
       <h3 className="text-xl font-bold mb-4">5-Day Forecast</h3>
@@ -17,7 +24,7 @@ const LeftLowerContainer = ({ forecast }) => {
                 alt={day.weather[0].description}
                 className="w-8 h-8 mr-2"
               />
-              <span>{Math.round(day.main.temp)}°C</span>
+              <span>{convertTemperature(day.main.temp)}</span>
             </div>
 
             {/* Date */}
