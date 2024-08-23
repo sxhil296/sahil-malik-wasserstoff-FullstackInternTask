@@ -55,7 +55,7 @@ const Header = ({ onSearch, onToggleUnit, unit }) => {
         className="toggle-unit-button sm:w-[15%]  bg-purple-500 px-[12px] sm:px-4 py-2 text-[16px] font-bold  rounded-md hover:bg-purple-600 mb-2 sm:mb-0"
         onClick={onToggleUnit}
       >
-        {unit === "metric" ? "°C" : "°F"}
+        {unit === "metric" ? "°F" : "°C"}
       </button>
       {/* Use Location Button */}
       <button
