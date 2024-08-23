@@ -48,10 +48,10 @@ const App = () => {
 
       //error when city name is incorrect
       if (!weatherResponse.ok || !forecastResponse.ok) {
-        // throw new Error("City not found or other error");
         setError("Please enter correct city name.")
         return;
       }
+      setError("");
 
       const weather = await weatherResponse.json();
       const forecast = await forecastResponse.json();
@@ -60,8 +60,8 @@ const App = () => {
       setWeatherData(weather);
       setForecastData(forecast.list.filter((_, index) => index % 8 === 0));
 
-      // console.log(weather);
-      // console.log(forecast);
+      console.log(weather);
+      console.log(forecast);
     } catch (error) {
       console.error("Error fetching weather data:", error);
     }
@@ -91,10 +91,10 @@ const App = () => {
               <div className="flex flex-col items-center justify-center h-[calc(100vh-120px)]">
                 <TiWeatherPartlySunny className="text-5xl text-white mb-2" />
                 <h1 className="text-white text-4xl font-bold mb-3 text-center">
-                  Welcome to Weatherlyyy
+                  Welcome to weatherlyyy
                 </h1>
                 <p className="text-white text-lg text-center text-balance mb-3">
-                  Enter a city name or give location to get weather updates
+                  Enter a city name or give location to get weather updates.
                 </p>
                 <a
                   target="_blank"
