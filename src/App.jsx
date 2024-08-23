@@ -66,6 +66,7 @@ const App = () => {
       console.error("Error fetching weather data:", error);
     }
   };
+  
 
   const toggleUnit = () => {
     setUnit((prevUnit) => (prevUnit === "metric" ? "imperial" : "metric"));
