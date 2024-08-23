@@ -8,7 +8,7 @@ const Header = ({ onSearch, onToggleUnit, unit, setError }) => {
     if (city) {
       onSearch(city); // Trigger the API call with the city name
     } else {
-      setError("Please enter a city name.");
+      setError("Please enter a city name or allow location access.");
     }
   };
 

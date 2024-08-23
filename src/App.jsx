@@ -49,6 +49,8 @@ const App = () => {
       //error when city name is incorrect
       if (!weatherResponse.ok || !forecastResponse.ok) {
         setError("Please enter correct city name.")
+        setWeatherData(null)
+        setForecastData(null)
         return;
       }
       setError("");
