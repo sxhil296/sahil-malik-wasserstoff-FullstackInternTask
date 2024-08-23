@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { FiSearch, FiMapPin } from "react-icons/fi";
 
-const Header = ({ onSearch, onToggleUnit, unit }) => {
+const Header = ({ onSearch, onToggleUnit, unit, setError }) => {
   const [city, setCity] = useState("");
 
   const handleSearch = () => {
     if (city) {
       onSearch(city); // Trigger the API call with the city name
+    } else {
+      setError("Please enter a city name.");
     }
   };
 
@@ -64,6 +66,7 @@ const Header = ({ onSearch, onToggleUnit, unit }) => {
       >
         <FiMapPin />
       </button>
+
     </header>
   );
 };
