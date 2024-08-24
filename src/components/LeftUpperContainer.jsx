@@ -29,7 +29,7 @@ const LeftUpperContainer = ({ weather, unit }) => {
           </p>
         </div>
         <img
-          src={`http://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
           alt={currentWeather.description}
           className="w-18 h-18"
         />

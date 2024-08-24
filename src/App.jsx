@@ -64,8 +64,8 @@ const App = () => {
       setWeatherData(weather);
       setForecastData(forecast.list.filter((_, index) => index % 8 === 0));
 
-      console.log(weather);
-      console.log(forecast);
+      // console.log(weather);
+      // console.log(forecast);
     } catch (error) {
       console.error("Error fetching weather data:", error);
     }

@@ -20,7 +20,7 @@ const LeftLowerContainer = ({ forecast, unit }) => {
             {/* Temperature with Icon */}
             <div className="flex items-center">
               <img
-                src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                 alt={day.weather[0].description}
                 className="w-8 h-8 mr-2"
               />
