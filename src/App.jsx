@@ -14,7 +14,9 @@ const App = () => {
   const [error, setError] = useState("");
 
 
-  const apiKey = import.meta.env.VITE_API_KEY;
+
+  const apiKey = "ec870ddf40f1fcb6c2d35ab7a4dd4b1c"
+  // const apiKey = import.meta.env.VITE_API_KEY;
   // console.log(apiKey);
 
   const fetchWeatherData = async (city, latitude, longitude) => {
