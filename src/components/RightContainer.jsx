@@ -9,14 +9,10 @@ import {
 import { MdOutlineVisibility } from "react-icons/md";
 import { GiDirectionSigns } from "react-icons/gi";
 import { FaWind } from "react-icons/fa6";
+import { convertTemperature } from "../temperatureUtils.js";
 
 const RightContainer = ({ highlights, unit }) => {
-  // Convert temperature if needed
-  const convertTemperature = (temp) => {
-    return unit === "metric"
-      ? `${temp}°C`
-      : `${((temp * 9) / 5 + 32).toFixed(1)}°F`;
-  };
+ 
 
   return (
     <div className="p-4 bg-[#28282B] rounded-md shadow-xl text-white">
@@ -116,7 +112,7 @@ const RightContainer = ({ highlights, unit }) => {
             <div>
               <h4 className="text-sm sm:text-lg font-bold">Feels Like</h4>
               <p className="text-xs sm:text-base">
-                {convertTemperature(highlights.feelsLike)}
+                {convertTemperature(highlights.feelsLike, unit)}
               </p>
             </div>
           </div>

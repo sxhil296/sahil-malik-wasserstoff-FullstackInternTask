@@ -49,3 +49,6 @@ VITE_API_KEY='your_api_key_here'
 ### Laptop View
 
 <img src="./public/laptop.png" alt="Home Page" width="500"/>
+
+### JSON Data
+<img src="./public/JSON-data.png" alt="Home Page" width="500"/>

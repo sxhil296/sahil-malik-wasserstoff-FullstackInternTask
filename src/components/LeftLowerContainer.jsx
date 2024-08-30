@@ -1,12 +1,8 @@
 import React from "react";
+import { convertTemperature } from "../temperatureUtils.js";
 
 const LeftLowerContainer = ({ forecast, unit }) => {
-  // Convert temperature if needed
-  const convertTemperature = (temp) => {
-    return unit === "metric"
-      ? `${Math.round(temp)}°C`
-      : `${((temp * 9) / 5 + 32).toFixed(1)}°F`;
-  };
+ 
 
   return (
     <div className="left-lower-container p-4 bg-[#28282B] shadow-xl text-white rounded-md">
@@ -24,7 +20,7 @@ const LeftLowerContainer = ({ forecast, unit }) => {
                 alt={day.weather[0].description}
                 className="w-8 h-8 mr-2"
               />
-              <span>{convertTemperature(day.main.temp)}</span>
+              <span>{convertTemperature(day.main.temp, unit)}</span>
             </div>
 
             {/* Date */}
