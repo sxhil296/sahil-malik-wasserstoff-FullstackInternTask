@@ -29,6 +29,13 @@ const Header = ({ onSearch, onToggleUnit, unit, setError }) => {
     }
   };
 
+  // using enter key for searching
+  const handleKey = (e)=> {
+    if(e.key==="Enter"){
+      handleSearch();
+    }
+  }
+
   return (
     <header className="bg-black text-white p-4 flex flex-row justify-center items-center gap-2 sm:gap-8">
       {/* Logo */}
@@ -44,6 +51,7 @@ const Header = ({ onSearch, onToggleUnit, unit, setError }) => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
           className="bg-transparent text-white w-full p-2 focus:outline-none"
+          onKeyDown={handleKey}
         />
         <FiSearch
           className="text-white text-lg cursor-pointer"

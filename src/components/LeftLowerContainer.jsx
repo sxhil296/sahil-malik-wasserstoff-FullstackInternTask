@@ -37,7 +37,7 @@ const LeftLowerContainer = ({ forecast, unit }) => {
             <div>
               <span>
                 {new Date(day.dt * 1000).toLocaleDateString("en-US", {
-                  weekday: "long",
+                  weekday: "short",
                 })}
               </span>
             </div>
